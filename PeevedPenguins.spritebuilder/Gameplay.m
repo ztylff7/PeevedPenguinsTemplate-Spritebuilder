@@ -32,6 +32,7 @@
     // nothing shall collide with our invisible nodes
     _pullbackNode.physicsBody.collisionMask = @[];
     _mouseJointNode.physicsBody.collisionMask = @[];
+    _physicsNode.collisionDelegate = self;
                       
 }
 
@@ -112,4 +113,8 @@
     [self releaseCatapult];
 }
 
+-(void)ccPhysicsCollisionPostSolve:(CCPhysicsCollisionPair *)pair seal:(CCNode *)nodeA wildcard:(CCNode *)nodeB
+{
+    CCLOG(@"Something collided with a seal!");
+}
 @end
